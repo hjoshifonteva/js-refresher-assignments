@@ -1,0 +1,15 @@
+{
+  "name": "js-refresher-assignments",
+  "version": "1.0.0",
+  "description": "JavaScript refresher assignments for LWC training",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test-runner.js",
+    "test:assignment": "node",
+    "start": "node -e \"console.log('Use npm run test:assignment <filename> to test individual assignments')\""
+  },
+  "keywords": ["javascript", "lwc", "salesforce", "training"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {}
+}

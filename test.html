@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .output {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        .success {
+            color: #155724;
+            background: #d4edda;
+            border-color: #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 JavaScript Assignment Tester</h1>
+        <p>Use this page to test your JavaScript assignments, especially DOM manipulation exercises.</p>
+
+        <div class="test-section">
+            <h3>Console Output</h3>
+            <div id="console-output" class="output"></div>
+            <button onclick="clearConsole()">Clear Console</button>
+        </div>
+
+        <div class="test-section">
+            <h3>DOM Testing Area</h3>
+            <div id="test-area">
+                <!-- DOM elements will be created here by your assignments -->
+            </div>
+            <button onclick="clearTestArea()">Clear Test Area</button>
+        </div>
+
+        <div class="test-section">
+            <h3>Load Assignment</h3>
+            <select id="assignment-selector">
+                <option value="">Select an assignment...</option>
+                <option value="01-variables-and-datatypes.js">Assignment 1: Variables and Data Types</option>
+                <option value="02-functions.js">Assignment 2: Functions</option>
+                <option value="03-arrays-and-methods.js">Assignment 3: Arrays and Methods</option>
+                <option value="04-objects-and-methods.js">Assignment 4: Objects and Methods</option>
+                <option value="05-es6-features.js">Assignment 5: ES6+ Features</option>
+                <option value="06-promises-async.js">Assignment 6: Promises and Async/Await</option>
+                <option value="07-dom-manipulation.js">Assignment 7: DOM Manipulation</option>
+                <option value="08-error-handling.js">Assignment 8: Error Handling</option>
+                <option value="09-classes-inheritance.js">Assignment 9: Classes and Inheritance</option>
+                <option value="10-modules-advanced.js">Assignment 10: Advanced Concepts</option>
+            </select>
+            <button onclick="loadAssignment()">Load Assignment</button>
+        </div>
+    </div>
+
+    <script>
+        // Override console.log to display in the page
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const consoleOutput = document.getElementById('console-output');
+
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            const message = args.map(arg =>
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+            ).join(' ');
+            consoleOutput.innerHTML += message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        };
+
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            const message = args.map(arg => String(arg)).join(' ');
+            consoleOutput.innerHTML += `<span style="color: red;">ERROR: ${message}</span>\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        };
+
+        function clearConsole() {
+            consoleOutput.innerHTML = '';
+        }
+
+        function clearTestArea() {
+            document.getElementById('test-area').innerHTML = '';
+        }
+
+        function loadAssignment() {
+            const selector = document.getElementById('assignment-selector');
+            const filename = selector.value;
+
+            if (!filename) {
+                alert('Please select an assignment first.');
+                return;
+            }
+
+            // Create a script element to load the assignment
+            const existingScript = document.getElementById('assignment-script');
+            if (existingScript) {
+                existingScript.remove();
+            }
+
+            const script = document.createElement('script');
+            script.id = 'assignment-script';
+            script.src = filename;
+            script.onerror = function() {
+                console.error(`Failed to load ${filename}. Make sure the file exists.`);
+            };
+            script.onload = function() {
+                console.log(`✅ Loaded ${filename}`);
+            };
+
+            document.head.appendChild(script);
+        }
+
+        // Welcome message
+        console.log('🎯 JavaScript Assignment Tester Ready!');
+        console.log('📝 Select an assignment from the dropdown and click "Load Assignment"');
+        console.log('🔍 Check the console output and DOM testing area for results');
+    </script>
+</body>
+</html>
