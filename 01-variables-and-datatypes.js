@@ -33,8 +33,7 @@ console.log(typeof PI);         // "number"
 // =================== YOUR CODE STARTS HERE ===================
 
 // TODO 1: Declare a variable using 'let' with your name
-let myName = /* YOUR CODE HERE */;
-
+let myName1 = "Durga prasad";
 // TODO 2: Declare a constant for the value of PI
 /* YOUR CODE HERE */ PI = 3.14159;
 
@@ -49,7 +48,7 @@ let person = {
 };
 
 // TODO 4: Use template literals to create a message
-let introduction = /* YOUR CODE HERE */`My name is ${myName} and I am ${age} years old`;
+let introduction = /* YOUR CODE HERE */`My naam is ${myName} and I am ${age} years old`;
 
 // TODO 5: Check data types using typeof
 console.log('Type of myName:', /* YOUR CODE HERE */ myName);
