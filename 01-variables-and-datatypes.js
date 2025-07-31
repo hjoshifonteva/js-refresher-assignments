@@ -33,29 +33,29 @@ console.log(typeof PI);         // "number"
 // =================== YOUR CODE STARTS HERE ===================
 
 // TODO 1: Declare a variable using 'let' with your name
-let myName1 = "Durga prasad";
+let myName = "Durga prasad";
 // TODO 2: Declare a constant for the value of PI
-/* YOUR CODE HERE */ PI = 3.14159;
+/* YOUR CODE HERE */  const PI = 3.14159;
 
 // TODO 3: Create variables for different data types
-let age = /* YOUR CODE HERE */;           // Put your age (number)
-let isStudent = /* YOUR CODE HERE */;     // true or false (boolean)
-let favoriteColors = /* YOUR CODE HERE */; // Array with 3 colors
+let age = 23;           // Put your age (number)
+let isStudent = true;     // true or false (boolean)
+let favoriteColors = ['blue', 'black', 'green']; // Array with 3 colors
 let person = {
-    name: /* YOUR CODE HERE */,           // Your name
-    age: /* YOUR CODE HERE */,            // Your age
-    city: /* YOUR CODE HERE */            // Your city
+    name:"durga prasad banisetti",           // Your name
+    age: 23,            // Your age
+    city: Hyderabad            // Your city
 };
 
 // TODO 4: Use template literals to create a message
-let introduction = /* YOUR CODE HERE */`My naam is ${myName} and I am ${age} years old`;
+let introduction = `My name is ${myName} and I am ${age} years old`;
 
 // TODO 5: Check data types using typeof
-console.log('Type of myName:', /* YOUR CODE HERE */ myName);
-console.log('Type of age:', /* YOUR CODE HERE */ age);
-console.log('Type of isStudent:', /* YOUR CODE HERE */ isStudent);
-console.log('Type of favoriteColors:', /* YOUR CODE HERE */ favoriteColors);
-console.log('Type of person:', /* YOUR CODE HERE */ person);
+console.log('Type of myName:', typeof myName);   //string 
+console.log('Type of age:', typeof age);         //number
+console.log('Type of isStudent:', typeof isStudent); //boolean
+console.log('Type of favoriteColors:', typeof favoriteColors); //object
+console.log('Type of person:', typeof person); // object
 
 // =================== TEST YOUR CODE ===================
 // Run this in your browser console and verify the outputs
