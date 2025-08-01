@@ -41,44 +41,44 @@ function applyOperation(x, y, operation) {
 // =================== YOUR CODE STARTS HERE ===================
 
 // TODO 1: Create a function declaration that calculates rectangle area
-/* YOUR CODE HERE */ calculateRectangleArea(length, width) {
-    return /* YOUR CODE HERE */;
+function calculateRectangleArea(length, width) {
+    return length*width;
 }
 
 // TODO 2: Create an arrow function that calculates circle area
-const calculateCircleArea = /* YOUR CODE HERE */ => {
-    return /* YOUR CODE HERE */;  // Formula: π * radius²
+const calculateCircleArea = (radius) => {
+    return  Math.PI * radius ** 2;  // Formula: π * radius²
 };
 
 // TODO 3: Create a function with default parameters for creating a user profile
-function createUserProfile(name, age = /* YOUR CODE HERE */, country = /* YOUR CODE HERE */) {
+function createUserProfile(name, age = 50, country = 'Bharath') {
     return {
-        name: /* YOUR CODE HERE */,
+        name: name,
         age: age,
-        country: /* YOUR CODE HERE */,
+        country: country,
         id: Math.floor(Math.random() * 1000)
     };
 }
 
 // TODO 4: Create a function that uses rest parameters to sum multiple numbers
-function sumNumbers(/* YOUR CODE HERE */) {
-    return numbers.reduce((total, num) => /* YOUR CODE HERE */, 0);
+function sumNumbers(numbers) {
+    return numbers.reduce((total, num) => num+total, 0);
 }
 
 // TODO 5: Create a higher-order function that applies an operation to two numbers
-function mathOperation(a, b, /* YOUR CODE HERE */) {
-    return /* YOUR CODE HERE */(a, b);
+function mathOperation(a, b, operation) {
+    return operation(a, b);
 }
 
 // TODO 6: Create arrow functions for basic math operations
-const multiply = (x, y) => /* YOUR CODE HERE */;
-const divide = (x, y) => /* YOUR CODE HERE */;
-const subtract = /* YOUR CODE HERE */ => x - y;
+const multiply = (x, y) => x*y;
+const divide = (x, y) => x/y;
+const subtract = (x,y) => x - y;
 
 // TODO 7: Create a function that returns another function (closure example)
 function createMultiplier(factor) {
     return function(number) {
-        return /* YOUR CODE HERE */;
+        return factor*number ;
     };
 }
 
