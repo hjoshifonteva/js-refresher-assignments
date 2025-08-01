@@ -52,7 +52,7 @@ let person = {
 let introduction = /* YOUR CODE HERE */`My name is ${myName} and I am ${age} years old`;
 
 // TODO 5: Check data types using typeof
-console.log('Type of myName:', /* YOUR CODE HERE */ myName);
+console.log('Type of Sravani:', /* YOUR CODE HERE */ myName);
 console.log('Type of age:', /* YOUR CODE HERE */ age);
 console.log('Type of isStudent:', /* YOUR CODE HERE */ isStudent);
 console.log('Type of favoriteColors:', /* YOUR CODE HERE */ favoriteColors);
