@@ -100,7 +100,6 @@ async function fetchWithErrorHandling(url) {
             throw new NetworkError(
                 `HTTP ${response.status}: ${response.statusText}`,
                  response.status
-
             );
         }
 
