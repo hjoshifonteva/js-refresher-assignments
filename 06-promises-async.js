@@ -5,23 +5,23 @@
  */
 
 // TODO: Create a simple promise
-const simplePromise = new /* PLACEHOLDER */((resolve, reject) => {
+const simplePromise = new Promise((resolve, reject) => {
     const success = Math.random() > 0.5;
     setTimeout(() => {
         if (success) {
-            /* PLACEHOLDER */('Promise resolved successfully!');
+           console.log('Promise resolved successfully!');
         } else {
-            /* PLACEHOLDER */('Promise rejected!');
+            console.log('Promise rejected!');
         }
     }, 1000);
 });
 
 // TODO: Handle promise with .then() and .catch()
 simplePromise
-    ./* PLACEHOLDER */(result => {
+    .then(result => {
         console.log('Success:', result);
     })
-    ./* PLACEHOLDER */(error => {
+    .catch(error => {
         console.log('Error:', error);
     });
 
@@ -30,25 +30,25 @@ function fetchUserData(userId) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (userId > 0) {
-                /* PLACEHOLDER */({
+                resolve({
                     id: userId,
                     name: `User ${userId}`,
                     email: `user${userId}@example.com`
                 });
             } else {
-                /* PLACEHOLDER */('Invalid user ID');
+              reject('Invalid user ID');
             }
         }, 500);
     });
 }
 
 // TODO: Use async/await
-/* PLACEHOLDER */ function getUserInfo(userId) {
+async function getUserInfo(userId) {
     try {
-        const user = /* PLACEHOLDER */ fetchUserData(userId);
+        const user = await fetchUserData(userId);
         console.log('User data:', user);
         return user;
-    } /* PLACEHOLDER */ (error) {
+    } catch(error) {
         console.log('Failed to fetch user:', error);
         return null;
     }
@@ -59,7 +59,7 @@ const promise1 = fetchUserData(1);
 const promise2 = fetchUserData(2);
 const promise3 = fetchUserData(3);
 
-Promise./* PLACEHOLDER */([promise1, promise2, promise3])
+Promise.all([promise1, promise2, promise3])
     .then(users => {
         console.log('All users:', users);
     })
@@ -68,7 +68,7 @@ Promise./* PLACEHOLDER */([promise1, promise2, promise3])
     });
 
 // TODO: Use Promise.race
-Promise./* PLACEHOLDER */([
+Promise.race([
     fetchUserData(4),
     new Promise((_, reject) => setTimeout(() => reject('Timeout'), 300))
 ])
@@ -81,14 +81,14 @@ Promise./* PLACEHOLDER */([
 
 // TODO: Chain promises
 fetchUserData(5)
-    ./* PLACEHOLDER */(user => {
+    .then(user => {
         console.log('First user:', user);
         return fetchUserData(6);
     })
     .then(user => {
         console.log('Second user:', user);
     })
-    ./* PLACEHOLDER */(error => {
+    .catch(error => {
         console.log('Chain error:', error);
     });
 
