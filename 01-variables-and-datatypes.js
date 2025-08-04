@@ -64,7 +64,7 @@ console.log('Type of person:', /* YOUR CODE HERE */ person);
 console.log('=== ASSIGNMENT 1 RESULTS ===');
 console.log('Name:', myName);
 console.log('Age:', age);
-console.log('Is Student:', isStudent);
+console.log('Is Student N:', isStudent);
 console.log('Favorite Colors:', favoriteColors);
 console.log('Person Object:', person);
 console.log('Introduction:', introduction);
