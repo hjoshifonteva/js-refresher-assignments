@@ -24,7 +24,7 @@ const allDivs = document.querySelectorAll('div');
 
 // TODO: Create new elements
 const newDiv = document.createElement('div');
-const newParagraph = document.getElementsByTagName('p');
+const newParagraph = document.createElement('p');
 
 // TODO: Set element content
 if (titleElement) {
