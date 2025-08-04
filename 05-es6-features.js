@@ -43,10 +43,9 @@ let counter = 0;       // This will be reassigned
 const user = { name: 'Sarah', age: 28, role: 'developer' };
 const currentYear = new Date().getFullYear();
 
-const userInfo = `user
-User Profile:
+const userInfo = `User Profile:
 Name: ${user.name}
-Age: ${user.age} (born in ${2002})
+Age: ${user.age} (born in ${currentYear - user.age}})
 Role: ${user.role.toUpperCase()}
 Status: ${user.age >= 18 ? 'Major' : 'Minor'}
 `;
@@ -155,8 +154,8 @@ const calculatorApp = {
     multiply,
 
     // Method with computed name
-    [/* YOUR CODE HERE */'get' + 'Info']() {
-        return /* YOUR CODE HERE */`${this.name} v${this.version}`;
+    ['get' + 'Info']() {
+        return `${this.name} v${this.version}`;
     }
 };
 
@@ -186,7 +185,7 @@ function analyzeData(dataset, options = {}) {
 // TODO 12: Template literal function (tagged template)
 function highlight(strings, ...values) {
     return strings.reduce((result, string, i) => {
-        const value = values[i] ? /* YOUR CODE HERE */`<mark>${values[i]}</mark>` : '';
+        const value = values[i] ? `<mark>${values[i]}</mark>` : '';
         return result + string + value;
     }, '');
 }

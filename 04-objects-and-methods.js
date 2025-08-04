@@ -181,16 +181,16 @@ const person = {
     },
 
     getFullName() {
-        return /* YOUR CODE HERE */`${this.firstName} ${this.lastName}`;
+        return `${this.firstName} ${this.lastName}`;
     },
 
     getFullAddress() {
-        const { street, city, zipCode } = person.address;
+        const { street, city, zipCode } = this.address;
         return `${street}, ${city} ${zipCode}`;
     },
 
     introduce() {
-        return /* YOUR CODE HERE */`Hi, I'm ${this.getFullName()} and I'm ${this.age} years old.`;
+        return `Hi, I'm ${this.getFullName()} and I'm ${this.age} years old.`;
     }
 };
 

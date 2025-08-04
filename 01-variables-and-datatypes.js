@@ -40,7 +40,7 @@ const PI = 3.14159;
 
 // TODO 3: Create variables for different data types
 let age = 25;           // Put your age (number)
-let isStudent =true;     // true or false (boolean)
+let isStudent = true;     // true or false (boolean)
 let favoriteColors = ['blue', 'green', 'purple']; // Array with 3 colors
 let person = {
     name: myName,           // Your name

@@ -51,7 +51,7 @@ const calculateCircleArea = (r) => {
 };
 
 // TODO 3: Create a function with default parameters for creating a user profile
-function createUserProfile(name, age =18 , country ='USA',id) {
+function createUserProfile(name, age =18 , country ='USA') {
     return {
         name:name,
         age: age,

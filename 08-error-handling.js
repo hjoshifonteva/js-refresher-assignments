@@ -42,9 +42,9 @@ function processData(data) {
 // TODO: Creating custom errors
 class ValidationError extends Error {
     constructor(message, field) {
-        throw new Error(message);
+        super(message);
         this.name = 'ValidationError';
-        this.field= field;
+        this.field = field;
     }
 }
 

@@ -18,8 +18,8 @@ const simplePromise = new Promise((resolve, reject) => {
 
 // TODO: Handle promise with .then() and .catch()
 simplePromise
-    .then(result => {
-        console.log('Success:', result);
+    .then(message => {
+        console.log('Success:', message);
     })
     .catch(error => {
         console.log('Error:', error);

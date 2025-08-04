@@ -65,10 +65,10 @@ const totalValue = products.reduce((total, product) => product.price+total,0);
 const firstElectronics = products.find(product => product.category==='Electronics');
 
 // TODO 6: Use some to check if any product costs more than $800
-const hasExpensiveProduct = products.some(product =>product.price>800);
+const hasExpensiveProduct = products.some(product =>product.price > 800);
 
 // TODO 7: Use every to check if all products have prices above $100
-const allExpensive = products.every(product =>product>100);
+const allExpensive = products.every(product =>product.price > 100);
 
 // TODO 8: Use map to create an array of numbers squared
 const squaredNumbers = numbers.map(num => num*num);
