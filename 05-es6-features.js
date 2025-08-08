@@ -36,24 +36,24 @@ const arr2 = [...arr1, 4, 5]; // [1, 2, 3, 4, 5]
 // =================== YOUR CODE STARTS HERE ===================
 
 // TODO 1: Use const and let appropriately
-/* YOUR CODE HERE */ PI = 3.14159;      // This should never change
-/* YOUR CODE HERE */ counter = 0;       // This will be reassigned
+const PI = 3.14159;      // This should never change
+let counter = 0;         // This will be reassigned
 
 // TODO 2: Template literals with complex expressions
 const user = { name: 'Sarah', age: 28, role: 'developer' };
 const currentYear = new Date().getFullYear();
 
-const userInfo = /* YOUR CODE HERE */`
+const userInfo = `
 User Profile:
-Name: ${/* YOUR CODE HERE */}
-Age: ${user.age} (born in ${/* YOUR CODE HERE */})
+Name: ${user.name}
+Age: ${user.age} (born in ${currentYear - user.age})
 Role: ${user.role.toUpperCase()}
-Status: ${user.age >= 18 ? /* YOUR CODE HERE */ : 'Minor'}
+Status: ${user.age >= 18 ? 'Adult' : 'Minor'}
 `;
 
 // TODO 3: Array destructuring with default values and rest
 const scores = [95, 87, 92, 78, 85];
-const [highest, second, third = /* YOUR CODE HERE */, ...remainingScores] = /* YOUR CODE HERE */;
+const [highest, second, third = 90, ...remainingScores] = scores;
 
 // TODO 4: Object destructuring with renaming and defaults
 const product = {
@@ -68,8 +68,8 @@ const {
     title: productName,
     price: productPrice,
     category: productCategory,
-    rating = /* YOUR CODE HERE */  // default value
-} = /* YOUR CODE HERE */;
+    rating = 4.5  // default value
+} = product;
 
 // TODO 5: Nested destructuring
 const company = {
@@ -92,31 +92,31 @@ const {
         address: { street: companyStreet }
     },
     employees: employeeCount
-} = /* YOUR CODE HERE */;
+} = company;
 
 // TODO 6: Function with default parameters and rest parameters
-function createReport(title, author = /* YOUR CODE HERE */, ...sections) {
+function createReport(title, author = 'Anonymous', ...sections) {
     return {
-        title: /* YOUR CODE HERE */,
+        title: title,
         author: author,
-        sections: /* YOUR CODE HERE */,
+        sections: sections,
         createdAt: new Date().toISOString(),
         pageCount: sections.length
     };
 }
 
 // TODO 7: Arrow functions with different syntaxes
-const square = x => /* YOUR CODE HERE */;                    // Single parameter, implicit return
-const add = (a, b) => /* YOUR CODE HERE */;                  // Multiple parameters, implicit return
-const processData = data => {                                // Single parameter, explicit return
+const square = x => x * x;                    
+const add = (a, b) => a + b;                  
+const processData = data => {
     const processed = data.map(item => item * 2);
-    return /* YOUR CODE HERE */;
+    return processed;
 };
 
 // TODO 8: Spread operator with arrays
 const fruits = ['apple', 'banana', 'orange'];
 const vegetables = ['carrot', 'broccoli', 'spinach'];
-const groceries = [/* YOUR CODE HERE */fruits, 'bread', /* YOUR CODE HERE */vegetables, 'milk'];
+const groceries = [...fruits, 'bread', ...vegetables, 'milk'];
 
 // TODO 9: Spread operator with objects
 const baseConfig = {
@@ -131,8 +131,8 @@ const userConfig = {
 };
 
 const finalConfig = {
-    /* YOUR CODE HERE */baseConfig,
-    /* YOUR CODE HERE */userConfig,
+    ...baseConfig,
+    ...userConfig,
     lastModified: Date.now()
 };
 
@@ -142,21 +142,18 @@ const version = '2.0';
 const multiply = (a, b) => a * b;
 
 const calculatorApp = {
-    name,                           // Property shorthand
-    version,                        // Property shorthand
-    [`created_${Date.now()}`]: true, // Computed property name
+    name,
+    version,
+    [`created_${Date.now()}`]: true,
 
-    // Method shorthand
     add(a, b) {
-        return /* YOUR CODE HERE */;
+        return a + b;
     },
 
-    // Method shorthand with arrow function stored in variable
     multiply,
 
-    // Method with computed name
-    [/* YOUR CODE HERE */'get' + 'Info']() {
-        return /* YOUR CODE HERE */`${this.name} v${this.version}`;
+    ['get' + 'Info']() {
+        return `${this.name} v${this.version}`;
     }
 };
 
@@ -164,21 +161,21 @@ const calculatorApp = {
 function analyzeData(dataset, options = {}) {
     const {
         sortBy = 'value',
-        filterMin = /* YOUR CODE HERE */,
+        filterMin = 0,
         limit = 10
-    } = /* YOUR CODE HERE */;
+    } = options;
 
     return dataset
-        ./* YOUR CODE HERE */(item => item.value >= filterMin)
-        ./* YOUR CODE HERE */((a, b) => {
+        .filter(item => item.value >= filterMin)
+        .sort((a, b) => {
             return sortBy === 'value' ?
-                b[/* YOUR CODE HERE */] - a.value :
+                b.value - a.value :
                 a.name.localeCompare(b.name);
         })
-        .slice(0, /* YOUR CODE HERE */)
+        .slice(0, limit)
         .map(({ name, value, ...other }) => ({
             name: name.toUpperCase(),
-            value: /* YOUR CODE HERE */,
+            value: value,
             hasMetadata: Object.keys(other).length > 0
         }));
 }
@@ -186,7 +183,7 @@ function analyzeData(dataset, options = {}) {
 // TODO 12: Template literal function (tagged template)
 function highlight(strings, ...values) {
     return strings.reduce((result, string, i) => {
-        const value = values[i] ? /* YOUR CODE HERE */`<mark>${values[i]}</mark>` : '';
+        const value = values[i] ? `<mark>${values[i]}</mark>` : '';
         return result + string + value;
     }, '');
 }
@@ -217,3 +214,35 @@ console.log(`Company: ${companyName} in ${companyCity}`);
 console.log(`Address: ${companyStreet}, Employees: ${employeeCount}`);
 
 // Test function with defaults and rest
+console.log('Report:', createReport('Q2 Summary', 'John Doe', 'Sales', 'Finance', 'Operations'));
+
+// Test arrow functions
+console.log('Square of 4:', square(4));
+console.log('Add 3 + 5:', add(3, 5));
+console.log('Processed Data:', processData([1, 2, 3]));
+
+// Test spread arrays
+console.log('Groceries:', groceries);
+
+// Test spread objects
+console.log('Final Config:', finalConfig);
+
+// Test enhanced object literal
+console.log('Calculator Info:', calculatorApp.getInfo());
+console.log('Calculator Add 2+3:', calculatorApp.add(2, 3));
+console.log('Calculator Multiply 3x4:', calculatorApp.multiply(3, 4));
+
+// Test analyzeData
+const dataset = [
+    { name: 'Item A', value: 45, tag: 'alpha' },
+    { name: 'Item B', value: 30 },
+    { name: 'Item C', value: 70, extra: true },
+    { name: 'Item D', value: 60 }
+];
+
+console.log('Analyzed Data:', analyzeData(dataset, { filterMin: 40, sortBy: 'value', limit: 3 }));
+
+// Test tagged template
+const lang = 'JavaScript';
+const level = 'Advanced';
+console.log('Highlight:', highlight`Course: ${lang}, Level: ${level}`);
