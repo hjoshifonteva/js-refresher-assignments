@@ -95,7 +95,7 @@ const allNumbers = [...numbers, ...moreNumbers];
 // TODO 13: Create a function that filters and sorts products
 function getProductsByCategory(products, category) {
     return products
-        .filter(product =>category)
+        .filter(product =>product.category=='Electronics')
         .sort((a, b) => a.price - b.price); // sort by price ascending
 }
 
