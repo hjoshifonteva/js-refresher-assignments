@@ -5,55 +5,56 @@
  */
 
 // TODO: Define a base class
-/* PLACEHOLDER */ Animal {
-    /* PLACEHOLDER */(name, species) {
-        this.name = /* PLACEHOLDER */;
+class Animal {
+    constructor(name, species) {
+        this.name = name;
         this.species = species;
         this.isAlive = true;
     }
 
     // TODO: Define instance method
     speak() {
-        return /* PLACEHOLDER */`${this.name} makes a sound`;
+        return `${this.name} makes a sound`;
     }
+
 
     // TODO: Define method with parameters
     eat(food) {
-        return `${/* PLACEHOLDER */} is eating ${food}`;
+        return `${this.name} is eating ${food}`;
     }
 
     // TODO: Static method
-    /* PLACEHOLDER */ getKingdom() {
+   static getKingdom() {
         return 'Animalia';
     }
 
     // TODO: Getter
-    get info() {
-        return /* PLACEHOLDER */`${this.name} is a ${this.species}`;
+     get info() {
+        return `${this.name} is a ${this.species}`;
     }
 
     // TODO: Setter
-    set alive(status) {
-        this./* PLACEHOLDER */ = Boolean(status);
+       set alive(status) {
+        this.isAlive = Boolean(status);
     }
 }
 
 // TODO: Create a derived class using inheritance
-class Dog /* PLACEHOLDER */ Animal {
+class Dog extends Animal {
     constructor(name, breed) {
-        /* PLACEHOLDER */(name, 'Canine'); // Call parent constructor
-        this.breed = /* PLACEHOLDER */;
+        super(name, 'Canine'); // Call parent constructor
+        this.breed = breed;
         this.tricks = [];
     }
 
     // TODO: Override parent method
     speak() {
-        return /* PLACEHOLDER */`${this.name} barks: Woof!`;
+        return `${this.name} barks: Woof!`;
     }
 
     // TODO: Add new method specific to Dog
     learnTrick(trick) {
-        this.tricks./* PLACEHOLDER */(trick);
+        this.tricks.push(trick);
         return `${this.name} learned ${trick}!`;
     }
 
@@ -62,59 +63,60 @@ class Dog /* PLACEHOLDER */ Animal {
             return `${this.name} doesn't know any tricks yet`;
         }
         const randomTrick = this.tricks[Math.floor(Math.random() * this.tricks.length)];
-        return /* PLACEHOLDER */`${this.name} performs ${randomTrick}!`;
+        return `${this.name} performs ${randomTrick}!`;
     }
 }
 
 // TODO: Create another derived class
-class Cat extends /* PLACEHOLDER */ {
+class Cat extends Animal {
     constructor(name, isIndoor = true) {
-        super(/* PLACEHOLDER */, 'Feline');
+        super(name, 'Feline');
         this.isIndoor = isIndoor;
         this.livesLeft = 9;
     }
 
     speak() {
-        return `${/* PLACEHOLDER */} meows: Meow!`;
+        return `${this.name} meows: Meow!`;
     }
 
-    // TODO: Method with default parameter
+
+    // Method with default parameter
     hunt(prey = 'mouse') {
         if (this.isIndoor) {
-            return /* PLACEHOLDER */`${this.name} pretends to hunt a toy ${prey}`;
+            return `${this.name} pretends to hunt a toy ${prey}`;
         }
         return `${this.name} hunts a real ${prey}`;
     }
 
-    // TODO: Use getter and setter
+    // Getter and Setter for lives
     get livesRemaining() {
-        return /* PLACEHOLDER */livesLeft;
+        return this.livesLeft;
     }
 
     set livesRemaining(lives) {
         if (lives >= 0 && lives <= 9) {
-            this.livesLeft = /* PLACEHOLDER */;
+            this.livesLeft = lives;
         }
     }
 }
 
-// TODO: Class with private fields (modern JavaScript)
+// Class with private fields
 class BankAccount {
-    // TODO: Private field
-    /* PLACEHOLDER */balance = 0;
+    // Private field
+    #balance = 0;
 
     constructor(accountHolder, initialBalance = 0) {
         this.accountHolder = accountHolder;
-        this.#balance = Math.max(0, /* PLACEHOLDER */);
+        this.#balance = Math.max(0, initialBalance);
     }
 
-    // TODO: Private method
-    /* PLACEHOLDER */validateAmount(amount) {
+    // Private method
+    #validateAmount(amount) {
         return typeof amount === 'number' && amount > 0;
     }
 
     deposit(amount) {
-        if (this.#validateAmount(/* PLACEHOLDER */)) {
+        if (this.#validateAmount(amount)) {
             this.#balance += amount;
             return `Deposited $${amount}. New balance: $${this.#balance}`;
         }
@@ -122,15 +124,15 @@ class BankAccount {
     }
 
     withdraw(amount) {
-        if (this./* PLACEHOLDER */(amount) && amount <= this.#balance) {
-            this.#balance -= /* PLACEHOLDER */;
+        if (this.#validateAmount(amount) && amount <= this.#balance) {
+            this.#balance -= amount;
             return `Withdrew $${amount}. New balance: $${this.#balance}`;
         }
         return 'Invalid withdrawal amount or insufficient funds';
     }
 
     get balance() {
-        return this./* PLACEHOLDER */;
+        return this.#balance;
     }
 }
 
@@ -138,14 +140,14 @@ class BankAccount {
 console.log('Testing Classes and Inheritance:');
 
 // Test Animal class
-const genericAnimal = new /* PLACEHOLDER */('Generic', 'Unknown');
+const genericAnimal = new Animal('Generic', 'Unknown');
 console.log(genericAnimal.speak());
 console.log(genericAnimal.eat('food'));
 console.log(genericAnimal.info);
 console.log('Kingdom:', Animal.getKingdom());
 
 // Test Dog class
-const dog = new /* PLACEHOLDER */('Buddy', 'Golden Retriever');
+const dog = new Dog('Buddy', 'Golden Retriever');
 console.log(dog.speak());
 console.log(dog.info);
 console.log(dog.learnTrick('sit'));
@@ -153,24 +155,28 @@ console.log(dog.learnTrick('roll over'));
 console.log(dog.performTrick());
 
 // Test inheritance
-console.log('Is dog an instance of Animal?', dog /* PLACEHOLDER */ Animal);
-console.log('Is dog an instance of Dog?', dog instanceof /* PLACEHOLDER */);
+console.log('Is dog an instance of Animal?', dog instanceof Animal);
+console.log('Is dog an instance of Dog?', dog instanceof Dog);
 
 // Test Cat class
-const cat = new Cat(/* PLACEHOLDER */, false);
+const cat = new Cat('Whiskers', false);
 console.log(cat.speak());
 console.log(cat.hunt());
 console.log(cat.hunt('bird'));
 console.log('Lives remaining:', cat.livesRemaining);
 cat.livesRemaining = 8;
-console.log('Lives after accident:', cat./* PLACEHOLDER */);
+console.log('Lives after accident:', cat.livesRemaining);
 
 // Test BankAccount with private fields
-const account = new /* PLACEHOLDER */('John Doe', 1000);
+const account = new BankAccount('John Doe', 1000);
 console.log(account.deposit(500));
 console.log(account.withdraw(200));
 console.log(account.withdraw(2000)); // Should fail
 console.log('Final balance:', account.balance);
 
-// Try to access private field (should be undefined)
-console.log('Direct access to #balance:', account.#balance); // This will cause an error
+// Try to access private field (should be undefined / error)
+try {
+    console.log('Direct access to #balance:', account.balance);
+} catch (err) {
+    console.log('Error accessing private field:', err.message);
+}
