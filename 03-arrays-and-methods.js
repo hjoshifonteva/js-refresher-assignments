@@ -36,6 +36,7 @@ const result = numbers
     .reduce((acc, n) => acc + n, 0);
 */
 
+
 // =================== YOUR CODE STARTS HERE ===================
 
 // Sample data for testing
@@ -50,53 +51,53 @@ const products = [
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // TODO 1: Use map to create an array of product names
-const productNames = products./* YOUR CODE HERE */(product => /* YOUR CODE HERE */);
+const productNames = products.map(product => product.name);
 
 // TODO 2: Use filter to get products that are in stock
-const inStockProducts = products./* YOUR CODE HERE */(product => /* YOUR CODE HERE */);
+const inStockProducts = products.filter(product => product.inStock);
 
 // TODO 3: Use filter to get products under $500
-const affordableProducts = products./* YOUR CODE HERE */(product => /* YOUR CODE HERE */);
+const affordableProducts = products.filter(product => product.price < 500);
 
 // TODO 4: Use reduce to calculate total value of all products
-const totalValue = products./* YOUR CODE HERE */((total, product) => /* YOUR CODE HERE */, /* YOUR CODE HERE */);
+const totalValue = products.reduce((total, product) => total + product.price, 0);
 
 // TODO 5: Use find to get the first Electronics product
-const firstElectronics = products./* YOUR CODE HERE */(product => /* YOUR CODE HERE */);
+const firstElectronics = products.find(product => product.category === 'Electronics');
 
 // TODO 6: Use some to check if any product costs more than $800
-const hasExpensiveProduct = products./* YOUR CODE HERE */(product => /* YOUR CODE HERE */);
+const hasExpensiveProduct = products.some(product => product.price > 800);
 
 // TODO 7: Use every to check if all products have prices above $100
-const allExpensive = products./* YOUR CODE HERE */(product => /* YOUR CODE HERE */);
+const allExpensive = products.every(product => product.price > 100);
 
 // TODO 8: Use map to create an array of numbers squared
-const squaredNumbers = numbers./* YOUR CODE HERE */(num => /* YOUR CODE HERE */);
+const squaredNumbers = numbers.map(num => num * num);
 
 // TODO 9: Chain methods - get even numbers, double them, then sum
 const evenDoubledSum = numbers
-    ./* YOUR CODE HERE */(num => /* YOUR CODE HERE */)  // filter evens
-    ./* YOUR CODE HERE */(num => /* YOUR CODE HERE */)  // double them
-    ./* YOUR CODE HERE */((sum, num) => /* YOUR CODE HERE */, 0); // sum them
+    .filter(num => num % 2 === 0)
+    .map(num => num * 2)
+    .reduce((sum, num) => sum + num, 0);
 
 // TODO 10: Use forEach to log each product's details
 console.log('=== PRODUCT CATALOG ===');
-products./* YOUR CODE HERE */(product => {
-    console.log(/* YOUR CODE HERE */`${product.name}: $${product.price} (${product.inStock ? 'In Stock' : 'Out of Stock'})`);
+products.forEach(product => {
+    console.log(`${product.name}: $${product.price} (${product.inStock ? 'In Stock' : 'Out of Stock'})`);
 });
 
 // TODO 11: Use array destructuring
-const [firstProduct, secondProduct, ...otherProducts] = /* YOUR CODE HERE */;
+const [firstProduct, secondProduct, ...otherProducts] = products;
 
 // TODO 12: Use spread operator to combine arrays
 const moreNumbers = [11, 12, 13];
-const allNumbers = [/* YOUR CODE HERE */numbers, /* YOUR CODE HERE */moreNumbers];
+const allNumbers = [...numbers, ...moreNumbers];
 
 // TODO 13: Create a function that filters and sorts products
 function getProductsByCategory(products, category) {
     return products
-        ./* YOUR CODE HERE */(product => /* YOUR CODE HERE */)
-        ./* YOUR CODE HERE */((a, b) => /* YOUR CODE HERE */); // sort by price ascending
+        .filter(product => product.category === category)
+        .sort((a, b) => a.price - b.price); // sort by price ascending
 }
 
 // =================== TEST YOUR CODE ===================
@@ -116,28 +117,3 @@ console.log('Second product:', secondProduct.name);
 console.log('Other products count:', otherProducts.length);
 console.log('All numbers combined:', allNumbers);
 console.log('Electronics sorted by price:', getProductsByCategory(products, 'Electronics'));
-
-/*
-🎯 EXPECTED OUTPUT EXAMPLE:
-=== PRODUCT CATALOG ===
-Laptop: $999 (In Stock)
-Phone: $699 (Out of Stock)
-Tablet: $299 (In Stock)
-Chair: $149 (In Stock)
-Desk: $299 (Out of Stock)
-=== ASSIGNMENT 3 RESULTS ===
-Product names: ['Laptop', 'Phone', 'Tablet', 'Chair', 'Desk']
-In stock products: 3 items
-Affordable products (<$500): 3 items
-Total value of all products: $ 2445
-First electronics product: Laptop
-Has expensive product (>$800): true
-All products >$100: true
-Squared numbers: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-Even numbers doubled and summed: 60
-First product: Laptop
-Second product: Phone
-Other products count: 3
-All numbers combined: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-Electronics sorted by price: [...] (sorted by price)
-*/

@@ -3,19 +3,23 @@
  * Fill in the placeholders to complete the code
  * Test this code in your browser console
  */
+/**
+ * Assignment 8: Error Handling
+ * Test this code in your browser console
+ */
 
 // TODO: Basic try-catch block
-/* PLACEHOLDER */ {
+try {
     const result = riskyOperation();
     console.log('Operation succeeded:', result);
-} /* PLACEHOLDER */ (error) {
+} catch (error) {
     console.log('Operation failed:', error.message);
 }
 
 function riskyOperation() {
     const shouldFail = Math.random() > 0.5;
     if (shouldFail) {
-        /* PLACEHOLDER */ new Error('Random failure occurred');
+        throw new Error('Random failure occurred');
     }
     return 'Success!';
 }
@@ -25,33 +29,33 @@ try {
     console.log('Starting risky operation...');
     const data = processData(null);
     console.log('Data processed:', data);
-} catch (/* PLACEHOLDER */) {
+} catch (error) {
     console.log('Error caught:', error.message);
     console.log('Error type:', error.name);
-} /* PLACEHOLDER */ {
+} finally {
     console.log('Cleanup completed');
 }
 
 function processData(data) {
     if (data === null || data === undefined) {
-        throw new /* PLACEHOLDER */('Data cannot be null or undefined');
+        throw new TypeError('Data cannot be null or undefined');
     }
     return data.toUpperCase();
 }
 
 // TODO: Creating custom errors
-class ValidationError extends /* PLACEHOLDER */ {
+class ValidationError extends Error {
     constructor(message, field) {
-        /* PLACEHOLDER */(message);
+        super(message);
         this.name = 'ValidationError';
-        this.field = /* PLACEHOLDER */;
+        this.field = field;
     }
 }
 
 class NetworkError extends Error {
     constructor(message, statusCode) {
-        super(/* PLACEHOLDER */);
-        /* PLACEHOLDER */name = 'NetworkError';
+        super(message);
+        this.name = 'NetworkError';
         this.statusCode = statusCode;
     }
 }
@@ -59,15 +63,15 @@ class NetworkError extends Error {
 // TODO: Function with error handling
 function validateUser(user) {
     if (!user) {
-        /* PLACEHOLDER */ new ValidationError('User object is required', 'user');
+        throw new ValidationError('User object is required', 'user');
     }
 
     if (!user.name || user.name.trim() === '') {
-        throw new /* PLACEHOLDER */('Name is required', 'name');
+        throw new ValidationError('Name is required', 'name');
     }
 
     if (!user.email || !user.email.includes('@')) {
-        throw new ValidationError(/* PLACEHOLDER */, 'email');
+        throw new ValidationError('Invalid email format', 'email');
     }
 
     return true;
@@ -76,13 +80,13 @@ function validateUser(user) {
 // TODO: Handle different error types
 function handleUserValidation(userData) {
     try {
-        const isValid = /* PLACEHOLDER */(userData);
+        const isValid = validateUser(userData);
         console.log('User validation passed');
         return isValid;
     } catch (error) {
-        if (error /* PLACEHOLDER */ ValidationError) {
+        if (error instanceof ValidationError) {
             console.log(`Validation Error in ${error.field}: ${error.message}`);
-        } else if (error instanceof /* PLACEHOLDER */) {
+        } else if (error instanceof NetworkError) {
             console.log(`Network Error (${error.statusCode}): ${error.message}`);
         } else {
             console.log('Unknown error:', error.message);
@@ -93,17 +97,17 @@ function handleUserValidation(userData) {
 
 // TODO: Promise error handling
 async function fetchWithErrorHandling(url) {
-    /* PLACEHOLDER */ {
+    try {
         const response = await fetch(url);
 
         if (!response.ok) {
             throw new NetworkError(
                 `HTTP ${response.status}: ${response.statusText}`,
-                /* PLACEHOLDER */
+                response.status
             );
         }
 
-        const data = /* PLACEHOLDER */ response.json();
+        const data = await response.json();
         return data;
     } catch (error) {
         if (error instanceof NetworkError) {
@@ -111,7 +115,7 @@ async function fetchWithErrorHandling(url) {
         } else {
             console.log('Fetch error:', error.message);
         }
-        /* PLACEHOLDER */ null;
+        return null;
     }
 }
 
@@ -122,7 +126,8 @@ console.log('Testing error handling...');
 for (let i = 0; i < 3; i++) {
     console.log(`\nTest ${i + 1}:`);
     try {
-        riskyOperation();
+        const result = riskyOperation();
+        console.log('Result:', result);
     } catch (e) {
         console.log('Caught:', e.message);
     }

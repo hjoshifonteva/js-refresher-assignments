@@ -41,44 +41,44 @@ function applyOperation(x, y, operation) {
 // =================== YOUR CODE STARTS HERE ===================
 
 // TODO 1: Create a function declaration that calculates rectangle area
-/* YOUR CODE HERE */ calculateRectangleArea(length, width) {
-    return /* YOUR CODE HERE */;
+function calculateRectangleArea(length, width) {
+    return length * width;
 }
 
 // TODO 2: Create an arrow function that calculates circle area
-const calculateCircleArea = /* YOUR CODE HERE */ => {
-    return /* YOUR CODE HERE */;  // Formula: π * radius²
+const calculateCircleArea = (radius) => {
+    return Math.PI * radius * radius;  // π * r²
 };
 
 // TODO 3: Create a function with default parameters for creating a user profile
-function createUserProfile(name, age = /* YOUR CODE HERE */, country = /* YOUR CODE HERE */) {
+function createUserProfile(name, age = 25, country = 'India') {
     return {
-        name: /* YOUR CODE HERE */,
+        name: name,
         age: age,
-        country: /* YOUR CODE HERE */,
+        country: country,
         id: Math.floor(Math.random() * 1000)
     };
 }
 
 // TODO 4: Create a function that uses rest parameters to sum multiple numbers
-function sumNumbers(/* YOUR CODE HERE */) {
-    return numbers.reduce((total, num) => /* YOUR CODE HERE */, 0);
+function sumNumbers(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
 }
 
 // TODO 5: Create a higher-order function that applies an operation to two numbers
-function mathOperation(a, b, /* YOUR CODE HERE */) {
-    return /* YOUR CODE HERE */(a, b);
+function mathOperation(a, b, operation) {
+    return operation(a, b);
 }
 
 // TODO 6: Create arrow functions for basic math operations
-const multiply = (x, y) => /* YOUR CODE HERE */;
-const divide = (x, y) => /* YOUR CODE HERE */;
-const subtract = /* YOUR CODE HERE */ => x - y;
+const multiply = (x, y) => x * y;
+const divide = (x, y) => x / y;
+const subtract = (x, y) => x - y;
 
 // TODO 7: Create a function that returns another function (closure example)
 function createMultiplier(factor) {
     return function(number) {
-        return /* YOUR CODE HERE */;
+        return number * factor;
     };
 }
 
@@ -110,21 +110,3 @@ const double = createMultiplier(2);
 const triple = createMultiplier(3);
 console.log('Double 5:', double(5));
 console.log('Triple 4:', triple(4));
-
-/*
-🎯 EXPECTED OUTPUT EXAMPLE:
-=== ASSIGNMENT 2 RESULTS ===
-Rectangle area (5x10): 50
-Circle area (radius 3): 28.274333882308138
-User profile 1: {name: 'Alice', age: 18, country: 'USA', id: 123}
-User profile 2: {name: 'Bob', age: 30, country: 'USA', id: 456}
-User profile 3: {name: 'Charlie', age: 25, country: 'Canada', id: 789}
-Sum of 1,2,3,4,5: 15
-Sum of 10,20,30: 60
-Math operations:
-  5 * 3 = 15
-  15 / 3 = 5
-  10 - 4 = 6
-Double 5: 10
-Triple 4: 12
-*/
