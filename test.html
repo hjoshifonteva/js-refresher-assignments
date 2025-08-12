@@ -94,7 +94,7 @@
             <button onclick="loadAssignment()">Load Assignment</button>
         </div>
     </div>
-
+      <!-- <script type="module" src="math-utils.js"></script> -->
     <script>
         // Override console.log to display in the page
         const originalConsoleLog = console.log;
@@ -143,6 +143,7 @@
             const script = document.createElement('script');
             script.id = 'assignment-script';
             script.src = filename;
+            //script.type = 'module';
             script.onerror = function() {
                 console.error(`Failed to load ${filename}. Make sure the file exists.`);
             };
@@ -158,5 +159,6 @@
         console.log('📝 Select an assignment from the dropdown and click "Load Assignment"');
         console.log('🔍 Check the console output and DOM testing area for results');
     </script>
+  
 </body>
 </html>
