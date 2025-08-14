@@ -47,33 +47,33 @@ const calculator = {
     value: 0,
 
     add(num) {
-        /* YOUR CODE HERE */.value += num;
-        return /* YOUR CODE HERE */; // Return this for chaining
+        this.value += num;
+        return this;
     },
 
-    subtract: /* YOUR CODE HERE */(num) {
-        this.value /* YOUR CODE HERE */ num;
+    subtract: function(num) {
+        this.value -= num;
         return this;
     },
 
     multiply(num) {
-        this./* YOUR CODE HERE */ *= num;
-        return /* YOUR CODE HERE */;
+        this.value *= num;
+        return this;
     },
 
     divide(num) {
         if (num !== 0) {
-            this.value /* YOUR CODE HERE */ num;
+            this.value /= num;
         }
         return this;
     },
 
     getValue() {
-        return /* YOUR CODE HERE */.value;
+        return this.value;
     },
 
     reset() {
-        /* YOUR CODE HERE */.value = 0;
+        this.value = 0;
         return this;
     }
 };
@@ -88,13 +88,13 @@ const student = {
 };
 
 // Get object keys
-const studentKeys = Object./* YOUR CODE HERE */(student);
+const studentKeys = Object.keys(student);
 
 // Get object values
-const studentValues = Object./* YOUR CODE HERE */(student);
+const studentValues = Object.values(student);
 
 // Get object entries (key-value pairs)
-const studentEntries = Object./* YOUR CODE HERE */(student);
+const studentEntries = Object.entries(student);
 
 // TODO 3: Use Object.assign to merge objects
 const defaultPreferences = {
@@ -109,23 +109,23 @@ const userPreferences = {
     autoSave: true
 };
 
-const finalPreferences = Object./* YOUR CODE HERE */({}, /* YOUR CODE HERE */, userPreferences);
+const finalPreferences = Object.assign({}, defaultPreferences, userPreferences);
 
 // TODO 4: Object destructuring with renaming and default values
 const {
     name: studentName,
     email: studentEmail,
-    gpa: gradePointAverage = /* YOUR CODE HERE */,
-    graduationYear = /* YOUR CODE HERE */
-} = /* YOUR CODE HERE */;
+    gpa: gradePointAverage = 0.0,
+    graduationYear = 2025
+} = student;
 
 // TODO 5: Create an object with computed property names
 const createDynamicObject = (keyName, keyValue) => {
     return {
         id: Math.random(),
         timestamp: Date.now(),
-        [/* YOUR CODE HERE */]: keyValue,
-        [`${keyName}_uppercase`]: /* YOUR CODE HERE */.toUpperCase()
+        [keyName]: keyValue,
+        [`${keyName}_uppercase`]: String(keyValue).toUpperCase()
     };
 };
 
@@ -134,37 +134,37 @@ const shoppingCart = {
     items: [],
 
     addItem(name, price, quantity = 1) {
-        const existingItem = this.items./* YOUR CODE HERE */(item => item.name === name);
+        const existingItem = this.items.find(item => item.name === name);
 
         if (existingItem) {
-            existingItem.quantity /* YOUR CODE HERE */ quantity;
+            existingItem.quantity += quantity;
         } else {
-            this.items./* YOUR CODE HERE */({
-                name: /* YOUR CODE HERE */,
+            this.items.push({
+                name: name,
                 price: price,
-                quantity: /* YOUR CODE HERE */
+                quantity: quantity
             });
         }
         return this;
     },
 
     removeItem(name) {
-        this.items = this.items./* YOUR CODE HERE */(item => /* YOUR CODE HERE */);
+        this.items = this.items.filter(item => item.name !== name);
         return this;
     },
 
     getTotal() {
-        return this.items./* YOUR CODE HERE */((total, item) => {
-            return total + (/* YOUR CODE HERE */ * item.quantity);
-        }, /* YOUR CODE HERE */);
+        return this.items.reduce((total, item) => {
+            return total + (item.price * item.quantity);
+        }, 0);
     },
 
     getItemCount() {
-        return this.items./* YOUR CODE HERE */((count, item) => /* YOUR CODE HERE */, 0);
+        return this.items.reduce((count, item) => count + item.quantity, 0);
     },
 
     clear() {
-        /* YOUR CODE HERE */.items = [];
+        this.items = [];
         return this;
     }
 };
@@ -181,16 +181,16 @@ const person = {
     },
 
     getFullName() {
-        return /* YOUR CODE HERE */`${this.firstName} ${this.lastName}`;
+        return `${this.firstName} ${this.lastName}`;
     },
 
     getFullAddress() {
-        const { street, city, zipCode } = /* YOUR CODE HERE */.address;
+        const { street, city, zipCode } = this.address;
         return `${street}, ${city} ${zipCode}`;
     },
 
     introduce() {
-        return /* YOUR CODE HERE */`Hi, I'm ${this.getFullName()} and I'm ${this.age} years old.`;
+        return `Hi, I'm ${this.getFullName()} and I'm ${this.age} years old.`;
     }
 };
 
