@@ -33,19 +33,19 @@ console.log(typeof PI);         // "number"
 // =================== YOUR CODE STARTS HERE ===================
 
 // TODO 1: Declare a variable using 'let' with your name
-let myName = /* YOUR CODE HERE */;
+let myName = 'Suresh';
 
 // TODO 2: Declare a constant for the value of PI
-/* YOUR CODE HERE */ PI = 3.14159;
+    const PI = 3.14159;
 
 // TODO 3: Create variables for different data types
-let age = /* YOUR CODE HERE */;           // Put your age (number)
-let isStudent = /* YOUR CODE HERE */;     // true or false (boolean)
-let favoriteColors = /* YOUR CODE HERE */; // Array with 3 colors
+let age = 25;           // Put your age (number)
+let isStudent = true;     // true or false (boolean)
+let favoriteColors = ['Blue',Red]; // Array with 3 colors
 let person = {
-    name: /* YOUR CODE HERE */,           // Your name
-    age: /* YOUR CODE HERE */,            // Your age
-    city: /* YOUR CODE HERE */            // Your city
+    name: 'sreepathi',           // Your name
+    age: 25,            // Your age
+    city: 'Hyderabad'            // Your city
 };
 
 // TODO 4: Use template literals to create a message
