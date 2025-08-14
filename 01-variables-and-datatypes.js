@@ -33,7 +33,7 @@ console.log(typeof PI);         // "number"
 // =================== YOUR CODE STARTS HERE ===================
 
 // TODO 1: Declare a variable using 'let' with your name
-let myName = /* YOUR CODE HERE */;
+let myName = 'suresh';
 
 // TODO 2: Declare a constant for the value of PI
 /* YOUR CODE HERE */ PI = 3.14159;
