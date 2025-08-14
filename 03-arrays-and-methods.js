@@ -50,7 +50,7 @@ const products = [
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // TODO 1: Use map to create an array of product names
-const productNames = products.product(product => product.name);
+const productNames = products.map(product => product.name);
 
 // TODO 2: Use filter to get products that are in stock
 const inStockProducts = products.filter(product => product.inStock);
@@ -81,7 +81,7 @@ const evenDoubledSum = numbers
 
 // TODO 10: Use forEach to log each product's details
 console.log('=== PRODUCT CATALOG ===');
-products.foreach(product => {
+products.forEach(product => {
     console.log(`${product.name}: $${product.price} (${product.inStock ? 'In Stock' : 'Out of Stock'})`);
 });
 
