@@ -33,30 +33,30 @@ console.log(typeof PI);         // "number"
 // =================== YOUR CODE STARTS HERE ===================
 
 // TODO 1: Declare a variable using 'let' with your name
-let myName = /* YOUR CODE HERE */;
+let myName = "Venkata Sai Rukesh Motaparthy";
 
 // TODO 2: Declare a constant for the value of PI
-/* YOUR CODE HERE */ PI = 3.14159;
+const PI = 3.14159;
 
 // TODO 3: Create variables for different data types
-let age = /* YOUR CODE HERE */;           // Put your age (number)
-let isStudent = /* YOUR CODE HERE */;     // true or false (boolean)
-let favoriteColors = /* YOUR CODE HERE */; // Array with 3 colors
+let age = 29;                            // Put your age (number)
+let isStudent = true;                    // true or false (boolean)
+let favoriteColors = ["violet", "light green", "purple"]; // Array with 3 colors
 let person = {
-    name: /* YOUR CODE HERE */,           // Your name
-    age: /* YOUR CODE HERE */,            // Your age
-    city: /* YOUR CODE HERE */            // Your city
+    name: "Venkata Sai Rukesh Motaparthy",                   // Your name
+    age: 29,                             // Your age
+    city: "Hyderabad"                    // Your city
 };
 
 // TODO 4: Use template literals to create a message
-let introduction = /* YOUR CODE HERE */`My name is ${myName} and I am ${age} years old`;
+let introduction = `My name is ${myName} and I am ${age} years old`;
 
 // TODO 5: Check data types using typeof
-console.log('Type of myName:', /* YOUR CODE HERE */ myName);
-console.log('Type of age:', /* YOUR CODE HERE */ age);
-console.log('Type of isStudent:', /* YOUR CODE HERE */ isStudent);
-console.log('Type of favoriteColors:', /* YOUR CODE HERE */ favoriteColors);
-console.log('Type of person:', /* YOUR CODE HERE */ person);
+console.log('Type of myName:', typeof myName);
+console.log('Type of age:', typeof age);
+console.log('Type of isStudent:', typeof isStudent);
+console.log('Type of favoriteColors:', typeof favoriteColors);
+console.log('Type of person:', typeof person);
 
 // =================== TEST YOUR CODE ===================
 // Run this in your browser console and verify the outputs
@@ -68,19 +68,3 @@ console.log('Is Student:', isStudent);
 console.log('Favorite Colors:', favoriteColors);
 console.log('Person Object:', person);
 console.log('Introduction:', introduction);
-
-/*
-🎯 EXPECTED OUTPUT EXAMPLE:
-=== ASSIGNMENT 1 RESULTS ===
-Name: Alice
-Age: 25
-Is Student: true
-Favorite Colors: ['blue', 'green', 'purple']
-Person Object: {name: 'Alice', age: 25, city: 'New York'}
-Introduction: My name is Alice and I am 25 years old
-Type of myName: string
-Type of age: number
-Type of isStudent: boolean
-Type of favoriteColors: object
-Type of person: object
-*/
