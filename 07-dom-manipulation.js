@@ -4,72 +4,69 @@
  * Create an HTML file and test this code there
  */
 
-// Note: This code requires an HTML page to run properly
-// Create a simple HTML file with some elements for testing
-
 // TODO: Select elements by ID
-const titleElement = document./* PLACEHOLDER */('title');
+const titleElement = document.getElementById('title');
 
 // TODO: Select elements by class name
-const buttons = document./* PLACEHOLDER */('button');
+const buttons = document.getElementsByClassName('button');
 
 // TODO: Select elements by tag name
-const paragraphs = document./* PLACEHOLDER */('p');
+const paragraphs = document.getElementsByTagName('p');
 
 // TODO: Select element by CSS selector
-const firstButton = document./* PLACEHOLDER */('.button:first-child');
+const firstButton = document.querySelector('.button:first-child');
 
 // TODO: Select multiple elements by CSS selector
-const allDivs = document./* PLACEHOLDER */('div');
+const allDivs = document.querySelectorAll('div');
 
 // TODO: Create new elements
-const newDiv = document./* PLACEHOLDER */('div');
-const newParagraph = document./* PLACEHOLDER */('p');
+const newDiv = document.createElement('div');
+const newParagraph = document.createElement('p');
 
 // TODO: Set element content
 if (titleElement) {
-    titleElement./* PLACEHOLDER */ = 'Updated Title';
+    titleElement.textContent = 'Updated Title';
 }
 
-newParagraph./* PLACEHOLDER */ = 'This is a new paragraph';
+newParagraph.textContent = 'This is a new paragraph';
 
 // TODO: Set element attributes
-newDiv./* PLACEHOLDER */('class', 'new-container');
-newDiv./* PLACEHOLDER */('id', 'dynamic-div');
+newDiv.setAttribute('class', 'new-container');
+newDiv.setAttribute('id', 'dynamic-div');
 
 // TODO: Add element to DOM
-document.body./* PLACEHOLDER */(newDiv);
-newDiv./* PLACEHOLDER */(newParagraph);
+document.body.appendChild(newDiv);
+newDiv.appendChild(newParagraph);
 
 // TODO: Add event listeners
 if (firstButton) {
-    firstButton./* PLACEHOLDER */('click', function() {
+    firstButton.addEventListener('click', function() {
         console.log('Button clicked!');
-        /* PLACEHOLDER */style.backgroundColor = 'lightblue';
+        this.style.backgroundColor = 'lightblue';
     });
 }
 
 // TODO: Modify styles
 if (titleElement) {
-    titleElement.style./* PLACEHOLDER */ = 'red';
-    titleElement.style./* PLACEHOLDER */ = '24px';
+    titleElement.style.color = 'red';
+    titleElement.style.fontSize = '24px';
 }
 
 // TODO: Add CSS classes
-newDiv.classList./* PLACEHOLDER */('highlight');
-newDiv.classList./* PLACEHOLDER */('container');
+newDiv.classList.add('highlight');
+newDiv.classList.add('container');
 
 // TODO: Remove CSS classes
-// newDiv.classList./* PLACEHOLDER */('highlight');
+// newDiv.classList.remove('highlight');
 
 // TODO: Toggle CSS classes
-newDiv.classList./* PLACEHOLDER */('active');
+newDiv.classList.toggle('active');
 
 // TODO: Handle form events (if form exists)
 const form = document.querySelector('form');
 if (form) {
-    form./* PLACEHOLDER */('submit', function(/* PLACEHOLDER */) {
-        /* PLACEHOLDER */.preventDefault();
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
         console.log('Form submission prevented');
     });
 }
@@ -79,11 +76,11 @@ const customEvent = new CustomEvent('myCustomEvent', {
     detail: { message: 'Hello from custom event!' }
 });
 
-document./* PLACEHOLDER */('myCustomEvent', function(e) {
+document.addEventListener('myCustomEvent', function(e) {
     console.log('Custom event received:', e.detail.message);
 });
 
-document./* PLACEHOLDER */(customEvent);
+document.dispatchEvent(customEvent);
 
 console.log('DOM manipulation script loaded');
 console.log('Remember to create HTML elements to test this code!');
